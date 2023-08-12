@@ -294,17 +294,20 @@ footer {
 
     .nav-bar {
         background-color: #ffe6c7;
-        border-bottom: 2px solid brown;
+        border-bottom: 2px solid #8a4e22;
+        border-left: 2px solid #8a4e22;
         flex-direction: column;
         height: 45vh;
         position: fixed;
-        margin-top: 20rem;
+        top:4rem;
         gap: 10px;
         right: -110%;
         transition: all .5s;
     }
 
     .active {
-        right: -1.3%;
+        right: 0%;
+        left: 6px;
+        
     }
 }
