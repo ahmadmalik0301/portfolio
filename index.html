@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Protfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./lighttheme.css" id="css-tag">
+
+</head>
+
+<body>
+    <nav class="nav-container">
+        <ul class="nav-bar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <div class="theme-block">
+                    <input type="checkbox" name="theme" id="theme">
+                    <label for="theme">Dark Mode</label>
+                </div>
+            </li>
+        </ul>
+        <div class="burger" type="button">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="home-container">
+            <h1 class="main-heading">Embrace Knowledge and Growth</h1>
+            <p id="para">Hey, <span>I'm Ahmad</span>, diving into web development. With code as my tool, I'm crafting
+                digital
+                experiences, delving into HTML, CSS, and JavaScript and working my way to be a full stack developer.
+                Join me as I turn algorithms into sleek interfaces
+                and bring web dreams to life.</p>
+        </div>
+        <div class="img-container">
+            <img src="./myImage.png" alt="">
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <div class="pfp-Container">
+                <img src="./myPfp.png" alt="my pfp">
+            </div>
+            <p><span>Hello,I'm Muhammad Ahmad</span>, a dedicated student currently pursuing my <span>Bachelor's degree
+                    in Computer Science</span> at the University of Management and Technology. I'm currently in my third
+                semester, and I'm proud to have maintained <span> outstanding grades</span> throughout my academic
+                journey. With a strong passion for technology and <span>a keen interest in website development</span>, I
+                am eagerly working towards building a successful career in the field. I believe that my academic
+                achievements and determination will enable me to <span>contribute effectively to the world of web
+                    development</span> and create innovative solutions that make a positive impact.</p>
+        </div>
+    </section>
+    <section id="projects">
+        <h1 class="main-heading center">My Projects</h1>
+        <div class="container">
+            <div class="card">
+                <h5>Simon Game</h5>
+                <p>"Simon Color Guessing Game Built using jQuery, Css and Html"</p>
+                <a href="./Simon Game/index.html" target="_blank">View ></a>
+            </div>
+            <div class="card">
+                <h5>Website Drum</h5>
+                <p>"A drum Kit built using javascript,css and html"</p>
+                <a href="./Drum Kit/index.html" target="_blank">View ></a>
+            </div>
+            <div class="card">
+                <h5>DogTinder</h5>
+                <p>"An Innovative Project Crafted Utilizing Bootstrap Components"</p>
+                <a href="./TinDog/tinDogmain.html" target="_blank">View ></a>
+            </div>
+            <div class="card">
+                <h5>Mondrain Project</h5>
+                <p>"A Mondrain Painting built using Css Grid Property"</p>
+                <a href="./Painting/painting.html" target="_blank">View ></a>
+            </div>
+            <div class="card">
+                <h5>My Portfolio</h5>
+                <p>"This Portfolio is Built entirely by me from Scratch"</p>
+                <a href="" target="_blank">View ></a>
+            </div>
+            <div class="card">
+                <h5>Roll a Dice</h5>
+                <p>"A simple Dice Game built using jQuery, Css and Html"</p>
+                <a href="./Dicee Game/dicee.html" target="_blank">View ></a>
+            </div>
+        </div>
+        <h3 class="small-heading">
+            For more coding related Projects Visit my Linkedln Profile!
+        </h3>
+    </section>
+    <section id="achievements">
+        <div class="achievements">
+            <h1 class="main-heading center">Achievements</h1>
+            <ul>
+                <li>Secured <span>90 % plus</span> Marks in Matriculation Exams Under The BISE Lahore</li>
+                <li>Secured <span>90 % plus</span> Marks in Intermidate Exams Under The BISE Lahore</li>
+                <li>Reciveved a <span>Dean Merit Certificate for 3.96 gpa</span> in 1st Semester</li>
+                <li>Recieved a <span>Rector Merit Certificate For 4.00 GPA</span> in 2nd Semester</li>
+                <li>Have Maintained <span>3.97 CGPA</span> in University so Far</li>
+            </ul>
+            <p class="center">Contact me for Referances</p>
+        </div>
+    </section>
+    <section id="contact">
+        <h1 class="main-heading center">Contact</h1>
+        <p class="center">You can Email on <span>mahmadmalik0301@gmail.com</span> or You can Direct Msg on
+            <span>Linkedln</span></p>
+        <div class="container">
+            <a href="mailto:mahmadmalik0301@gmail.com" target="_blank"><img src="./envelope-at-fill.svg" alt=""
+                    height="40"></a>
+
+            <a href="https://www.linkedin.com/in/muhammad-ahmad-a86274287" target="_blank"><img src="./linkedin.svg"
+                    alt="" height="40"></a>
+        </div>
+    </section>
+    <footer class="center">Copyright &copy 2023 | 2023 All copyright reserved</footer>
+
+    <script>
+        var styleSheet = document.querySelector("#css-tag");
+
+        document.querySelector("#theme").addEventListener("change", (event) => {
+
+            if (event.target.checked) {
+                styleSheet.setAttribute("href", "./darktheme.css");
+            }
+            else {
+                styleSheet.setAttribute("href", "./lighttheme.css");
+            }
+        });
+        var navBar = document.querySelector(".nav-bar");
+        document.querySelector(".burger").addEventListener("click", () => {
+            navBar.classList.toggle("active");
+        });
+
+        var navLinks = document.querySelectorAll(".nav-bar > li");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navBar.classList.remove("active");
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Roboto Mono', monospace;
+            background-color: #222021;
+
+        }
+
+        .container {
+            border: 2px solid gray;
+            background-color: black;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 10px;
+            padding: 20px;
+            border-radius: 20px;
+
+        }
+
+        .btn {
+            font-size: 2.3rem;
+            height: 100px;
+            width: 100px;
+            color: white;
+            background-color: #222021;
+            outline: 1px solid gray;
+            border-radius: 10px;
+            transition: all .3s;
+        }
+
+        .display-main {
+            width: 430px;
+            padding: 5px;
+            grid-column: span 4;
+            outline: 1px solid black;
+            color: whitesmoke;
+            border-radius: 20px;
+            font-size: 2.5rem;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        .display {
+            
+            overflow-x: auto;
+        }
+        .display::-webkit-scrollbar {
+            height: 5px;
+        }
+
+        .display::-webkit-scrollbar-track {
+            background: black; /* color of the track */
+        }
+
+        .display::-webkit-scrollbar-thumb {
+            background: darkslategray; /* color of the thumb */
+        }
+
+        .display::-webkit-scrollbar-thumb:hover {
+            background: gray; /* color of the thumb on hover */
+        }
+       
+
+        .operators>img {
+            filter: invert(8%) sepia(89%) saturate(4246%) hue-rotate(235deg) brightness(116%) contrast(92%);
+        }
+
+        .btn:hover {
+            background-color: lightgray;
+            color: black;
+            border-radius: 20px;
+        }
+
+        .operators {
+            color: rgb(27, 27, 153);
+        }
+
+        .btn.operators#equal {
+            background-color: rgb(27, 27, 153);
+            height: 210px;
+            color: whitesmoke;
+            outline: 0x;
+            grid-row: span 2;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="display-main">
+            <div class="display"></div>
+        </div>
+        <button class="btn operators">C</button>
+        <button class="btn operators">/</button>
+        <button class="btn operators">*</button>
+        <button class="btn operators">⌫</button>
+        <button class="btn digits">7</button>
+        <button class="btn digits">8</button>
+        <button class="btn digits">9</button>
+        <button class="btn operators">-</button>
+        <button class="btn digits">4</button>
+        <button class="btn digits">5</button>
+        <button class="btn digits">6</button>
+        <button class="btn operators">+</button>
+        <button class="btn digits">1</button>
+        <button class="btn digits">2</button>
+        <button class="btn digits">3</button>
+        <button class="btn operators" id="equal">=</button>
+        <button class="btn operators">%</button>
+        <button class="btn digits">0</button>
+        <button class="btn digits">.</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        var mainDisplay = "";
+
+        function safeEval(str) {
+            try {
+                return new Function('return ' + str)();
+            } catch (error) {
+                return "Invalid Expression";
+            }
+        }
+        function calulator(textToDisplay) {
+            if ("=" === textToDisplay) {
+                mainDisplay = safeEval(mainDisplay).toString();
+            } else if ("C" === textToDisplay) {
+                $(".display").text("");
+                mainDisplay = "";
+            } else if ("⌫" === textToDisplay) {
+                mainDisplay = mainDisplay.slice(0, mainDisplay.length - 1);
+            } else {
+                mainDisplay = mainDisplay + textToDisplay;
+            }
+            $(".display").text(mainDisplay);
+        }
+
+
+        $(".btn").click(function (event) {
+            var character = event.target.textContent;
+            calulator(character);
+
+        });
+
+    </script>
+</body>
+
+</html>
