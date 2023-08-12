@@ -9,9 +9,7 @@ body {
     color: #e0e0e0;
     cursor: context-menu;
     transition: all .4s;
-
 }
-
 .nav-container {
     background-color: #CC3333;
     height: 4rem;
