@@ -298,18 +298,21 @@ footer {
 
     .nav-bar {
         background-color: #CC3333;
-        border-bottom: 2px solid black;
+        outline-bottom: 2px solid black;
+        outline-left:2px solid black;
+        outline-offset:-3px;
         flex-direction: column;
         height: 45vh;
         position: fixed;
-        margin-top: 20rem;
+        top:4rem;
         gap: 10px;
         right: -110%;
         transition: all .5s;
     }
 
     .active {
-        right: -1.3%;
+        right: 0%;
+        left:8px;
     }
 
 }
