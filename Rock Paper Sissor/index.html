@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper Scissors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .main-container {
+            background-color: whitesmoke;
+            border: 4px solid gray;
+            border-radius: 40px;
+            width: 100%;
+            height: 75vh;
+            padding: 30px;
+        }
+
+        .main-screen {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box {
+            width: 350px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons {
+            width: 70%;
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+        }
+
+        .box>img {
+            width: 200px;
+            height: 200px;
+            border-radius: 30px;
+            outline: 3px solid black;
+        }
+
+        button {
+            width: 150px;
+            height: 70px;
+            border: 2px solid gray;
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: gray;
+            border-color: black;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .score {
+            display: flex;
+            justify-content: center;
+            gap: 500px;
+        }
+        @media(max-width:767px) {
+            .main-container{
+                height: 100vh;
+            }
+            .score{
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="main-screen">
+            <div class="box user-area"><img src="./photos/start.jpg" alt="">
+                <h3>You selected : <span id="display-user-choice">Your selection</span></h3>
+            </div>
+            <div class="box computer-area"><img src="./photos/start.jpg" alt="">
+                <h3>Computer selected : <span id="display-comp-choice">Your selection</span></h3>
+            </div>
+        </div>
+        <div class="buttons center">
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
+        </div>
+        <div class="result">
+            <h2>Here Result will be shown.</h2>
+        </div>
+        <div class="score">
+            <div class="user-score">
+                <h3>Your Score : <span>0</span></h3>
+            </div>
+            <div class="computer-score">
+                <h3>Computer Score : <span>0</span></h3>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script>
+        const result = $(".result > h2");
+        var allChoseable = ["Rock", "Paper", "Scissors"];
+        var myScore = 0;
+        var computerScore = 0;
+
+        $("button").click(function () {
+
+            const randomNum = Math.floor(Math.random() * 3);
+            const computerChoice = allChoseable[randomNum];
+            const myChoice = $(this).text();
+
+            $(".user-area > img").attr("src", "./photos/" + myChoice + ".jpg");
+            $(".computer-area > img").attr("src", "./photos/" + computerChoice + ".jpg");
+
+            $(".user-area span").text(myChoice);
+            $(".computer-area span").text(computerChoice);
+
+            if (myChoice === computerChoice) {
+                result.text("Its a Draw!");
+            }
+            else if (myChoice === "Rock" && computerChoice === "Scissors" || myChoice === "Paper" && computerChoice === "Rock" || myChoice === "Scissors" && computerChoice === "Paper") {
+                const resultText = myChoice + "Beats " + computerChoice;
+                result.text(myChoice + " Beats " + computerChoice + "!You Won.");
+                myScore++;
+            }
+            else {
+                result.text(computerChoice + " Beats " + myChoice + "!Computer Won!");
+                computerScore++;
+            }
+
+            $(".user-score span").text(myScore);
+            $(".computer-score span").text(computerScore);
+
+        });
+
+    </script>
+</body>
+
+</html>
